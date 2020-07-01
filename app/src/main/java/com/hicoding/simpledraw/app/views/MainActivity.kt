@@ -29,9 +29,13 @@ class MainActivity : AppCompatActivity() {
             addTab(this.newTab().setIcon(R.drawable.ic_action_undo))
             addTab(this.newTab().setIcon(R.drawable.ic_action_redo))
             addTab(this.newTab().setIcon(R.drawable.ic_action_delete))
+            addTab(this.newTab().setIcon(R.drawable.ic_action_palette))
+            addTab(this.newTab().setIcon(R.drawable.ic_action_save))
             getTabAt(0)?.icon?.setColorFilter(ContextCompat.getColor(this@MainActivity, android.R.color.white), PorterDuff.Mode.SRC_IN)
             getTabAt(1)?.icon?.setColorFilter(ContextCompat.getColor(this@MainActivity, android.R.color.white), PorterDuff.Mode.SRC_IN)
             getTabAt(2)?.icon?.setColorFilter(ContextCompat.getColor(this@MainActivity, android.R.color.white), PorterDuff.Mode.SRC_IN)
+            getTabAt(3)?.icon?.setColorFilter(ContextCompat.getColor(this@MainActivity, android.R.color.white), PorterDuff.Mode.SRC_IN)
+            getTabAt(4)?.icon?.setColorFilter(ContextCompat.getColor(this@MainActivity, android.R.color.white), PorterDuff.Mode.SRC_IN)
             setOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab) {
                     setActionTabSelected(tab)
@@ -51,7 +55,8 @@ class MainActivity : AppCompatActivity() {
         when (tab.position) {
             0 -> drawing_view.undo()
             1 -> drawing_view.redo()
-            2 -> colorDialog.showColorPicker(this, 1)
+            2 -> drawing_view.clear()
+            4 -> drawing_view.saveImage()
         }
     }
 }
